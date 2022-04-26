@@ -1,0 +1,57 @@
+<!-- Group No:2 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>GrainHub</title>
+    <link rel="stylesheet" href="../css/Display.css">
+    <script src="../js/Display.js"></script>
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <a href="/home"><h2 class="logo">GrainHub</h2></a>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+
+
+            <form class="search" method="post" action="displaySearch">
+                <input id="query" name="query" class="srch" type="search">
+                <a>
+                    <button class="btn">Search</button>
+                </a>
+            </form>
+
+            <% if (data == null) { %>
+             <h1>No sales currently, Please check back again</h1>
+            <% } else { %>
+            <div class="cont">    
+                    <table>
+                        <tr class="thead">
+                            <th>First Name</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                        </tr>
+                <% data.forEach(function(item){ %>
+                        <tr class="trow">
+                            <td><%= item.fname%></td>
+                            <td><%= item.product%></td>
+                            <td><%= item.qty%></td>
+                        </tr>
+                <% }) %>    
+                    </table>
+                <% } %>
+            </div>    
+        </div>
+
+        
+        </div>
+    </div>
+</body>
+</html>

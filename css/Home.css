@@ -1,0 +1,186 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.main{
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.5)50%, rgba(0,0,0,0.5)50%), url(../images/GrainHub-2.jpeg);
+    background-position: center;
+    background-size: cover;
+    height: 109vh
+}
+
+.navbar{
+    width: 1200px;
+    height: 75px;
+    margin: auto;
+}
+
+.icon{
+    width: 200px;
+    float: left;
+    height: 70px;
+}
+
+.logo{
+    color: #ff7200;
+    font-size: 35px;
+    font-family: Arial;
+    padding:10px;
+    float: left;
+}
+
+.menu{
+    width: 400px;
+    float: left;
+    height: 70px;
+}
+
+ul{
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul li{
+    list-style: none;
+    margin-left: 62px;
+    margin-top: 27px;
+    font-size: 14px;
+}
+
+ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-family: Arial;
+    font-weight: bold;
+    transition: 0.4s ease-in-out;
+}
+
+ul li a:hover{
+    color: #ff7200;
+}
+
+.display{
+    width: 320px;
+    float: left;
+    margin-left: 270px;
+}
+
+.content{
+    width: 400px;
+    height: auto;
+    margin: auto;
+    color: #ff7200;
+    float:left;
+    padding-right: 200px;
+}
+
+.content h1{
+    font-family: 'Times New Roman';
+    font-size: 50px;
+    padding-left: 20px;
+    margin-top: 9%;
+    letter-spacing: 2px;
+}
+
+.content span{
+    color: #fff;
+    font-size: 65px
+}
+
+::placeholder{
+    color: #fff;
+    font-family: Arial;
+}
+
+.btn{
+    width: 120px;
+    height: 40px;
+    background: #ff7200;
+    border: 2px solid #ff7200;
+    margin-top: 13px;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 5px;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+.btn:hover{
+    color: #000;
+}
+
+.btn:focus{
+    outline: none;
+}
+
+.slider{
+    height: 400px;
+    width: 600px;
+    overflow: hidden;
+    box-shadow: 1px 1px 15px rgba(0,0,0,0.4);
+}
+
+.slider .images{
+    height: 100%;
+    width: 100%;
+}
+
+.images img{
+    height: 100%;
+    width: 100%;
+}
+
+.container{
+    margin-top: 100px;
+    margin-left: 100px;
+}
+
+.dropdown {
+    position: fixed;
+    top:10px;
+    right:100px;
+}
+
+.dropbtn {
+    background-color: #ff7200;
+    color: white;
+    padding: 5px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+}
+
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ff7200;
+    min-width: 140px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+  
+.dropdown-content a {
+    color: white;
+    font-size: 15px;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+  
+.dropdown-content a:hover {
+    color: black;
+}
+  
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+  
+.dropdown:hover .dropbtn {
+    background-color: #c35a05;
+}

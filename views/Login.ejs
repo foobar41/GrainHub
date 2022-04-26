@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>GrainHub</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/Login.css">
+    <script src="../js/Login.js"></script>
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+            <h2 class="logo">GrainHub</h2>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+
+
+            <div class="form">
+                <form action="login" method="post">
+                    <h2>Login</h2>
+                    <br>
+                    <div class="user" id="user">
+                        <span class="phrase">I am a</span>
+
+                        <input type="radio" id="farmer_rad" name="user" value="Farmer">
+                        <label id="farmer" for="farmer_rad">Farmer</label>
+                        
+                        <input type="radio" id="consumer_rad" name="user" value="Consumer" checked>
+                        <label id="consumer" for="consumer_rad">Consumer</label>
+                    </div>
+                    <input id="email" type="email" name="email" placeholder="Email">
+                    <input id="pass" type="password" name="password" placeholder="Password">
+                    <button id="login" class="login"><a>Login</a></button>
+                    
+                    <p id="link" class="link">Don't have an account?<br>
+                    <a href="/dir_signup">Sign up </a> here</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

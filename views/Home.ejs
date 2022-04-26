@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>GrainHub</title>
+    <link rel="stylesheet" href="../css/Home.css">
+    <script src="../js/Home.js"></script>
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <a href="/home"><h2 class="logo">GrainHub</h2></a>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+            <% if (user === "Consumer") { %>
+                <div class="display">
+                    <a href="/display">
+                        <button class="btn">View Products</button>
+                    </a>
+                </div>
+            <% } else { %>
+                <div class="display">
+                    <a href="/status">
+                        <button class="btn">Update Status</button>
+                    </a>
+                </div>
+            <% } %>    
+                <div class="dropdown">
+                    <img class="dropbtn" src="../images/profile.png">
+                    <div class="dropdown-content">
+                        <a href="/dir_profile">Edit Profile</a>
+                        <a href="/logout">Log Out</a>
+                    </div>
+                </div>
+            
+        </div>
+
+        <div class="container">
+            <div class="content">
+                <h1>GrainHub  <br><span>TO HELP</span> <br>FARMERS</h1>
+            </div>
+
+            <div class="slider">
+                <div class="images">
+                    <img class="slide" src="../images/GrainHub-1.jpeg" alt="1">
+                    <img class="slide" src="../images/GrainHub-2.jpeg" alt="2">
+                    <img class="slide" src="../images/GrainHub_background_3.webp" alt="3">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

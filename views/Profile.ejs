@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>edit profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/Profile.css" rel="stylesheet">
+    <script src="../js/Profile.js"></script>
+</head>
+<body>
+  <div class="container">
+
+      <h3>First Name : &nbsp;</h3><h4><%= data.fname %></h4><br>
+      <h3>Last Name : &nbsp;</h3><h4><%= data.lname %></h4><br>
+      <h3>Contact Number : &nbsp;</h3><h4><%= data.num %></h4><br>
+      <h3>Address : &nbsp;</h3><h4><%= data.add %></h4><br>
+        <hr><hr>
+
+      <h1 class="text-primary">Edit Profile</h1>
+      <hr>
+      <div class="row">
+    
+      <div class="col-md-9 personal-info">
+          
+
+          <form action="profile" method="post" class="form-horizontal">
+              <div class="form-group">
+                  <label class="col-lg-3 control-label">First name:</label>
+                  <div class="col-lg-8">
+                      <input name="fname" id="fname" class="form-control">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-lg-3 control-label">Last name:</label>
+                  <div class="col-lg-8">
+                      <input name="lname" id="lname" class="form-control">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-lg-3 control-label">Contact number:</label>
+                  <div class="col-lg-8">
+                      <input name="num" id="num" class="form-control">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-lg-3 control-label">Address:</label>
+                  <div class="col-lg-8">
+                      <input name="address" id="lname" class="form-control">
+                  </div>
+              </div>
+
+              <a href="/chk_update"><button id="update" type="submit">Update</button></a>
+          </form>
+        </div>
+      </div>
+  </div>
+  <hr>
+</body>
+</html>

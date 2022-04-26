@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>GrainHub</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/Signup.css">
+    <script src="../js/Signup.js"></script>
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">GrainHub</h2>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+
+
+            <div class="form">
+                <form action="signup" method="post">
+                    <h2>Signup</h2>
+                    <br>
+                    <div class="user" id="user">
+                        <span class="phrase">I am a</span>
+
+                        <input type="radio" id="farmer_rad" name="user" value="Farmer">
+                        <label id="farmer" for="farmer_rad">Farmer</label>
+                        
+                        <input type="radio" id="consumer_rad" name="user" value="Consumer" checked>
+                        <label id="consumer" for="consumer_rad">Consumer</label>
+                    </div>
+                    <br>
+                    
+                    <input name="fname" id="fname" placeholder="First Name">
+                    <br>
+
+                    <input name="lname" id="lname" placeholder="Last Name">
+                    <br>
+
+                    <input name="email" id="email" type="email" placeholder="Email">
+                    <br>
+
+                    <input name="num" id="num" placeholder="Contact Number">
+                    <br>
+
+                    <input name="add" id="add" placeholder="Address">
+                    <br>   
+    
+                    <input name="password" id="pass" type="password" placeholder="Password">
+                    <span id="pass_msg"></span>
+                    <br>
+
+                    <input name="conf_password" id="conf_pass" type="password" placeholder="Confirm Password">
+                    <br>
+
+                    <div class="pass_req">
+                        <ul>
+                            <li>password must contain a capital letter</li>
+                            <li>password must contain a number</li>
+                            <li>password must contain a special character</li>
+                            <li>password length must be 8-15</li>
+                        </ul>   
+                    </div>
+                    <br>
+
+                    <button id="submit" class="submit" type="submit"><a>Register</a></button>
+                    
+                    <p id="link" class="link">Already registered?<br>
+                    <a href="/dir_login">Login </a> here</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

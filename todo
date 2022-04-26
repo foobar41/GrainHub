@@ -1,0 +1,7 @@
+>> display caps lock status in password bar >> Signup.js
+>> display if passwords match green bar >> Signup.html
+>> separate login for farmer and consumer >> server.js
+>> create favicon.ico for all html files
+>> disable going back to login and register pages after login or register >> server.js
+>> maintain current users profile until logout
+>> add dynamic updates to admin page
