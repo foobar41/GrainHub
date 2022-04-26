@@ -35,7 +35,7 @@ window.onload = function(){
     document.getElementById('conf_pass').onkeydown = (a) => { return no_space(a) }
 
     // show if password met requirements
-    document.getElementById('pass').onkeyup = function(a) {
+    document.getElementById('pass').onkeyup = function() {
 
         const in_pass = document.getElementById('pass').value
         if (passwordPattern.test(in_pass)){
@@ -43,6 +43,19 @@ window.onload = function(){
         }
         else{
             document.getElementById('pass').style.borderBottomColor = "red"
+        }
+    }
+
+    // show if pass and conf_pass match
+    document.getElementById('conf_pass').onkeyup = function() {
+
+        const in_conf_pass = document.getElementById('conf_pass').value
+        const in_pass = document.getElementById('pass').value
+        if (in_pass === in_conf_pass){
+            document.getElementById('conf_pass').style.borderBottomColor = "green"
+        }
+        else{
+            document.getElementById('conf_pass').style.borderBottomColor = "red"
         }
     }
 
@@ -62,7 +75,8 @@ window.onload = function(){
         if (in_fname.length === 0){ alert('First Name cannot be empty'); res.render('Signup');}
         else if (in_lname.length === 0){ alert('Last Name cannot be empty'); res.render('Signup');}
         else if (in_email.length === 0){ alert('Email cannot be empty'); res.render('Signup');}
-        else if (in_num.length === 0){ alert('Contact number cannot be empty'); res.render('Signup');}            
+        else if (in_num.length === 0){ alert('Contact number cannot be empty'); res.render('Signup');}  
+        else if (in_num.length != 10){ alert('Contact number must be 10 digits'); res.render('Signup');}          
         else if (in_add.length === 0){ alert('Address cannot be empty'); res.render('Signup');}            
         else if (in_pass.length === 0){ alert('Password cannot be empty'); res.render('Signup');}
         else if (in_conf_pass.length === 0){ alert('Confirm Password cannot be empty'); res.render('Signup');}

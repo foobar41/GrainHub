@@ -1,16 +1,20 @@
 <!-- Group No:2 -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>GrainHub</title>
     <link rel="stylesheet" href="../css/Display.css">
     <script src="../js/Display.js"></script>
 </head>
+
 <body>
     <div class="main">
         <div class="navbar">
             <div class="icon">
-                <a href="/home"><h2 class="logo">GrainHub</h2></a>
+                <a href="/home">
+                    <h2 class="logo">GrainHub</h2>
+                </a>
             </div>
             <div class="menu">
                 <ul>
@@ -26,32 +30,65 @@
                 <a>
                     <button class="btn">Search</button>
                 </a>
+                <p>Enter only lowercase alphabets</p>
             </form>
 
-            <% if (data == null) { %>
-             <h1>No sales currently, Please check back again</h1>
-            <% } else { %>
-            <div class="cont">    
-                    <table>
-                        <tr class="thead">
-                            <th>First Name</th>
-                            <th>Product</th>
-                            <th>Quantity</th>
-                        </tr>
-                <% data.forEach(function(item){ %>
-                        <tr class="trow">
-                            <td><%= item.fname%></td>
-                            <td><%= item.product%></td>
-                            <td><%= item.qty%></td>
-                        </tr>
-                <% }) %>    
-                    </table>
-                <% } %>
-            </div>    
+
         </div>
 
-        
+        <div class="tab">
+            <% if (data==null) { %>
+                <h1>No sales currently, Please check back again</h1>
+                <% } else { %>
+                    <div class="cont">
+                        <table>
+                            <tr class="thead">
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Jowar</th>
+                                <th>Rice</th>
+
+                                <th>Corn</th>
+                                <th>Wheat</th>
+                                <th>Email</th>
+                                <th>Contact number</th>
+
+
+                            </tr>
+                            <% data.forEach(function(item){ %>
+                                <tr class="trow">
+                                    <td>
+                                        <%= item.fname %>
+                                    </td>
+                                    <td>
+                                        <%= item.lname %>
+                                    </td>
+                                    <td>
+                                        <%= item.jowar %> kg
+                                    </td>
+                                    <td>
+                                        <%= item.rice %> kg
+                                    </td>
+                                    <td>
+                                        <%= item.corn %> kg
+                                    </td>
+                                    <td>
+                                        <%= item.wheat %> kg
+                                    </td>
+                                    <td>
+                                        <%= item.email %>
+                                    </td>
+                                    <td>
+                                        <%= item.num %>
+                                    </td>
+                                   
+                                </tr>
+                                <% }) %>
+                        </table>
+                        <% } %>
+                    </div>
         </div>
     </div>
 </body>
+
 </html>

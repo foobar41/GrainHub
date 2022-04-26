@@ -19,9 +19,6 @@ window.onload = function(){
         // disable typing space in last name
         document.getElementById('lname').onkeydown = (a) => { return no_space(a) }
 
-        // disable typing space in email
-        document.getElementById('email').onkeydown = (a) => { return no_space(a) }
-
         // allow only numbers in contact number
         document.getElementById('num').onkeydown = (a) => { return only_num(a) }
 
@@ -34,13 +31,13 @@ window.onload = function(){
     
             let all_filled =  false
     
-            if (in_fname.length === 0){ alert('First Name cannot be empty'); res.render('Signup');}
-            else if (in_lname.length === 0){ alert('Last Name cannot be empty'); res.render('Signup');}
-            else if (in_email.length === 0){ alert('Email cannot be empty'); res.render('Signup');}
-            else if (in_num.length === 0){ alert('Contact number cannot be empty'); res.render('Signup');}            
-            else if (in_add.length === 0){ alert('Address cannot be empty'); res.render('Signup');}            
-            else if (in_pass.length === 0){ alert('Password cannot be empty'); res.render('Signup');}
-            else if (in_conf_pass.length === 0){ alert('Confirm Password cannot be empty'); res.render('Signup');}
+            if (in_fname.length === 0) alert('First Name cannot be empty');
+            else if (in_lname.length === 0) alert('Last Name cannot be empty');
+            else if (in_email.length === 0) alert('Email cannot be empty');
+            else if (in_num.length === 0) alert('Contact number cannot be empty');            
+            else if (in_add.length === 0) alert('Address cannot be empty');          
+            else if (in_pass.length === 0) alert('Password cannot be empty');
+            else if (in_conf_pass.length === 0) alert('Confirm Password cannot be empty');
             else all_filled = true
     
             if (all_filled && passwordPattern.test(in_pass) && in_pass === in_conf_pass){

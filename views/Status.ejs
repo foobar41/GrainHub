@@ -1,39 +1,102 @@
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GrainHub</title>
     <link rel="stylesheet" href="../css/Status.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
     <script src="../js/Status.js"></script>
 </head>
-
 <body>
-    <div class="main">
-        <div class="navbar">
-            <div class="icon">
-                <a href="/home"><h2 class="logo">GrainHub</h2></a>
+    <% let jowar , rice, corn, wheat %>
+    <% jowar = rice = corn = wheat = 0 %>
+    <% if (data != null) { %>
+    <% jowar = data.jowar %>
+    <% rice = data.rice %>
+    <% corn = data.corn %>
+    <% wheat = data.wheat } %>
+     <div class="main">
+        <div class="card">
+            <div class="card-imagen">
+                <img class="thumb" src="../images/Jowar.jpeg" alt="">
             </div>
+            <div class="card-body">
+                <h2>Jowar </h2>
+            </div>
+            <form action="updateJowar" method="post">
+                <div class="card-footer">
+                        <div class="item">
+                            <input id="inj" name="jowar" value=<%= jowar %>>
+                        </div>
+                        <div class="item">
+                            <button class="button" type="submit">Update Quantity</button>
+                        </div>
+                </div>
+            </form>
+        </div>
 
-            <div class="menu">
-                <ul>
-                    <li><a href="/home">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                </ul>
+        <div class="card">
+            <div class="card-imagen">
+                <img class="thumb" src="../images/Rice.jpeg" alt="">
             </div>
-            <div class="rice_data">Rice
-                <input name="rice" id="rice" placeholder="Quantity">
-                <button type="button">Update</button>  
-            </div> 
+            <div class="card-body">
+                <h2>Rice </h2>
+            </div>
+            <form action="updateRice" method="post">
+                <div class="card-footer">
+                        <div class="item">
+                            <input id="inr" name="rice" value=<%= rice %>>
+                        </div>
+                        <div class="item">
+                            <button class="button" type="submit">Update Quantity</button>
+                        </div>
+                </div>
+            </form>
+        </div>
 
-            <div class="wheat_data">Wheat
-                <input name="wheat" id="wheat" placeholder="Quantity">
-                <button type="button">Update</button>
+        <div class="card">
+            <div class="card-imagen">
+                <img class="thumb" src="../images/Corn.jpeg" alt="">
             </div>
-            
-            <div class="corn_data">Corn
-                <input name="corn" id="corn" placeholder="Quantity">
-                <button type="button">Update</button>
+            <div class="card-body">
+                <h2>Corn </h2>
             </div>
+            <form action="updateCorn" method="post">
+                <div class="card-footer">
+                        <div class="item">
+                            <input id="inc" name="corn" value=<%= corn %>>
+                        </div>
+                        <div class="item">
+                            <button class="button" type="submit">Update Quantity</button>
+                        </div>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="card">
+            <div class="card-imagen">
+                <img class="thumb" src="../images/Wheat.jpeg" alt="">
+            </div>
+            <div class="card-body">
+                <h2>Wheat </h2>
+            </div>
+            <form action="updateWheat" method="post">
+                <div class="card-footer">
+                        <div class="item">
+                            <input id="inw" name="wheat" value=<%= wheat %>>
+                        </div>
+                        <div class="item">
+                            <button class="button" type="submit">Update Quantity</button>
+                        </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="text">
+        <p>Enter only numbers in the input field</p>
+        <p>By default the units are in Kilograms(Kg)</p>
+    </div>
 </body>
-
-
 </html>

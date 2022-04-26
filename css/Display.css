@@ -5,12 +5,16 @@
     padding: 0;
 }
 
+body{
+    background-color: rgba(234, 255, 0, 0.445);
+}
+
 .main{
     width: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.5)50%, rgba(0,0,0,0.5)50%), url(../images/GrainHub_background_3.webp);
+    background: linear-gradient(to top, rgba(0,0,0,0.3)50%, rgba(0,0,0,0.3)50%), url(../images/GrainHub_background_3.webp);
     background-position: center;
     background-size: cover;
-    height: 109vh;
+    min-height: 1000px;
 }
 
 .navbar{
@@ -162,39 +166,19 @@ ul li a:hover{
 }
 
 .element a:link{
-    color: black;
-    text-decoration: none;
-}
-
-.element a:visited{
     color: white;
-    background-color: transparent;
     text-decoration: none;
-}
-  
-.element a:hover{
-    color: blue;
-    background-color: transparent;
-}
-  
-.element a:active{
-    color: yellow;
-    background-color: transparent;
-    text-decoration: underline;
-}
-
-.element a:focus{
-    color: blue;
 }
 
 .cont {
-    background-color: rgba(4, 110, 18,0.8);
+    /* background-color: rgba(4, 110, 18,0.8); */
     margin: 10px;
     padding: 10px;
 }
 
 .trow {
-    background-color: rgb(85, 255, 6,0.5);
+    color:white;
+    background-color:green;
     height: 65px;
     width: 400px;
     margin-bottom: 10px;
@@ -202,8 +186,24 @@ ul li a:hover{
     text-align: center;
 }
 .thead{
-    background-color: rgb(85, 255, 6,0.5);
+    height: 40px;
+    color: white;
+    background-color: darkgreen;
     width:auto;
     padding: left 10%; ;
 
+}
+
+.tab {
+    margin-left: 15%;
+    margin-right: 30%;
+    margin-top: 4%;
+}
+
+table{
+    width: 1000px;
+}
+
+.search p {
+    margin-top: 10px;
 }

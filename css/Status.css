@@ -1,38 +1,83 @@
-*{
-  margin: 0;
-  padding: 0;
+body {
+  background-color: orange;
 }
 
 .main{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 150px;
+}
+
+.card{
+  font-family: "Nunito";
+  border: 18px;
+  background-color: white;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  width: 330px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.thumb{
   width: 100%;
-  background: linear-gradient(to top, rgba(0,0,0,0.5)50%, rgba(0,0,0,0.5)50%), url(../images/GrainHub-2.jpeg);
-  background-position: center;
-  background-size: cover;
-  height: 109vh
 }
 
-.navbar{
-  width: 1200px;
-  height: 75px;
-  margin: auto;
+.card-body{
+  grid-area: text;
+  margin: 25;
+}
+.card-body p{
+  color: #191919;
+  font-size: 15px;
+  font-weight: 300;
 }
 
-.icon{
-  width: 200px;
-  float: left;
-  height: 70px;
+.card-body h2{
+  margin-top: 10px;
+
 }
 
-.logo{
-  color: #ff7200;
-  font-size: 35px;
-  font-family: Arial;
-  padding:10px;
-  float: left;
+.card-footer{
+  grid-area: stats;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: #435ee5;
+  height: 80px;
+  margin-bottom: -50px;
 }
 
-.menu{
-  width: 400px;
-  float: left;
-  height: 70px;
+.card-footer .item{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  color: white;
+}
+
+.item:hover{
+  background-color: #123488;
+  transition: .5s;
+  cursor: pointer;
+}
+
+.card:hover{
+transform: scale(1.1);
+transition: .8s;
+}
+
+.card-imagen img{
+  height: 220px;
+}
+
+.text {
+  font-family:Georgia;
+  font-size: 18px;
+  margin-top: -65px;
+  margin-left: 600px;
 }

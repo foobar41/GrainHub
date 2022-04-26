@@ -19,6 +19,7 @@ db.once('open', function(){
 
 const users = db.collection('users');
 const farmer = db.collection('farmer');
+const contact = db.collection('contact');
 
 // current user credentials
 // remove let if error
@@ -52,10 +53,6 @@ app.get('/contact', function(req,res){
    res.render('Contact')
 })
 
-app.get('/status', function(req,res){
-   res.render('Status');
-})
-
 app.post('/signup', function(req,res){
    const fname = req.body.fname;
    const lname = req.body.lname;
@@ -76,20 +73,47 @@ app.post('/signup', function(req,res){
       "mode": user
    }
 
-   if(!fname || !lname || !email || !num || !add || !pass || !conf_pass || !user || !(pass === conf_pass)) {
+   if(!fname || !lname || !email || !num || !(num.length === 10) || !add || !pass || !conf_pass || !user || !(pass === conf_pass)) {
       res.render('Signup')
       return;
    }
 
-   users.insertOne(data,function(err, collection){
-      if (err) throw err;
-      console.log("Record inserted Successfully");
-   });
+   
 
-   cur_email = email;
-   cur_pass = pass;
-   cur_user = user;
-   res.render("Home",{ user: cur_user });
+   users.count(function(err,count){
+
+      if (count === 0){
+         users.insertOne(data,function(err, collection){
+            if (err) throw err;
+            console.log("Record inserted Successfully");
+         });
+   
+         cur_email = email;
+         cur_pass = pass;
+         cur_user = user;
+         res.render("Home",{ user: cur_user });
+      } 
+      else {
+         users.findOne({"email": email}, function(err, result){
+            if (err) throw err;
+            if (result != null){
+               console.log("User already exists");
+               return res.render("Login");
+            }
+            else {
+               users.insertOne(data,function(err, collection){
+                  if (err) throw err;
+                  console.log("Record inserted Successfully");
+               });
+         
+               cur_email = email;
+               cur_pass = pass;
+               cur_user = user;
+               res.render("Home",{ user: cur_user });
+            }
+         })
+      }
+   })   
 })
 
 
@@ -102,10 +126,10 @@ app.post('/login', function(req,res){
       res.render('Login')
       return;
    }
+   
    // admin portal
    if (email==="admin@123" && pass==="admin123" && user==="Farmer"){
-      res.render('Admin');
-      return;
+      res.redirect('/adminf')
    }
 
    const data = {
@@ -143,6 +167,13 @@ app.post('/profile', function(req,res){
    const num = req.body.num;
    const add = req.body.add;
 
+   if(!fname || !lname || !num || !add) {
+      users.findOne({"email":cur_email},function(err,details){
+         if(err) throw err;
+         res.render("Profile",{data: details});
+      })
+   }
+
    const original = {
       "email": cur_email
    }
@@ -161,7 +192,10 @@ app.post('/profile', function(req,res){
 		console.log("Record updated successfully");
    })
 
-   res.render('Home',{user: cur_user})
+   users.findOne({"email":cur_email},function(err,details){
+      if(err) throw err;
+      res.render("Profile",{data: details});
+   })
 })
 
 
@@ -176,24 +210,246 @@ app.get('/display', function(req,res){
 app.post('/displaySearch',function(req,res){
    const query = req.body.query;
 
-   farmer.find({"product": query}).toArray(function(err,result){
-      if (err) throw err;
-      res.render('Display',{data: result})
-      // records += result;
-      
-   })
+   if (query === "jowar") {
+      farmer.find({"jowar": {$ne : 0}}).toArray(function(err,result){
+         console.log(query);
+         if (err) throw err;
+         res.render('Display',{data: result})
+         
+      })
+   }
 
-   // farmer.find({"fname": query}).toArray(function(err,result){
-   //    if (err) throw err;
-   //    records += result;
-   // })
+   if (query === "rice") {
+      farmer.find({"rice": {$ne : 0}}).toArray(function(err,result){
+         console.log(query);
+         if (err) throw err;
+         res.render('Display',{data: result})
+         
+      })
+   }
 
-   // farmer.find({"qty": query}).toArray(function(err,result){
-   //    if (err) throw err;
-   //    records += result;
-   // })
+   if (query === "corn") {
+      farmer.find({"corn": {$ne : 0}}).toArray(function(err,result){
+         console.log(query);
+         if (err) throw err;
+         res.render('Display',{data: result})
+         
+      })
+   }
+
+   if (query === "wheat") {
+      farmer.find({"wheat": {$ne : 0}}).toArray(function(err,result){
+         console.log(query);
+         if (err) throw err;
+         res.render('Display',{data: result})
+         
+      })
+   }
 })
 
+app.get('/status',function(req,res){
+   farmer.findOne({"email":cur_email},function(err,result){
+      if (err) throw err;
+      if (result) res.render('Status',{data: result});
+      else res.render('Status',{data: null})
+   })
+})
+
+app.post('/updateJowar',function(req,res){
+   const jowar = req.body.jowar;
+   farmer.findOne({"email":cur_email},function(err,result){
+      if (result) {
+         const query = {"email":cur_email};
+         const update = {$set: {"jowar":jowar}};
+         farmer.findOneAndUpdate(query, update, function(err,res){
+            if (err) throw err;
+            console.log("updated a record");
+         })
+         res.redirect('/status');
+      }
+      else {
+         users.findOne({"email":cur_email},function(err,result){
+            const data = {
+               "fname": result.fname,
+               "lname": result.lname,
+               "email": cur_email,
+               "num": result.num,
+               "add": result.add,
+               "jowar": jowar,
+               "rice": 0,
+               "corn": 0,
+               "wheat": 0
+            }
+            farmer.insertOne(data,function(err, collection){
+               if (err) throw err;
+               console.log("Record inserted Successfully");
+            });
+         })
+      }
+   })
+})
+
+app.post('/updateRice',function(req,res){
+   const rice = req.body.rice;
+   farmer.findOne({"email":cur_email},function(err,result){
+      if (result) {
+         const query = {"email":cur_email};
+         const update = {$set: {"rice":rice}};
+         farmer.findOneAndUpdate(query, update, function(err,res){
+            if (err) throw err;
+            console.log("updated a record");
+         })
+         res.redirect('/status');
+      }
+      else {
+         users.findOne({"email":cur_email},function(err,result){
+            const data = {
+               "fname": result.fname,
+               "lname": result.lname,
+               "email": cur_email,
+               "num": result.num,
+               "add": result.add,
+               "jowar": 0,
+               "rice": rice,
+               "corn": 0,
+               "wheat": 0
+            }
+            farmer.insertOne(data,function(err, collection){
+               if (err) throw err;
+               console.log("Record inserted Successfully");
+            });
+         })
+      }
+   })
+})
+
+app.post('/updateCorn',function(req,res){
+   const corn = req.body.corn;
+   farmer.findOne({"email":cur_email},function(err,result){
+      if (result) {
+         const query = {"email":cur_email};
+         const update = {$set: {"corn":corn}};
+         farmer.findOneAndUpdate(query, update, function(err,res){
+            if (err) throw err;
+            console.log("updated a record");
+         })
+         res.redirect('/status');
+      }
+      else {
+         users.findOne({"email":cur_email},function(err,result){
+            const data = {
+               "fname": result.fname,
+               "lname": result.lname,
+               "email": cur_email,
+               "num": result.num,
+               "add": result.add,
+               "jowar": 0,
+               "rice": 0,
+               "corn": corn,
+               "wheat": 0
+            }
+            farmer.insertOne(data,function(err, collection){
+               if (err) throw err;
+               console.log("Record inserted Successfully");
+            });
+         })
+      }
+   })
+})
+
+app.post('/updateWheat',function(req,res){
+   const wheat = req.body.wheat;
+   farmer.findOne({"email":cur_email},function(err,result){
+      if (result) {
+         const query = {"email":cur_email};
+         const update = {$set: {"wheat":wheat}};
+         farmer.findOneAndUpdate(query, update, function(err,res){
+            if (err) throw err;
+            console.log("updated a record");
+         })
+         res.redirect('/status');
+      }
+      else {
+         users.findOne({"email":cur_email},function(err,result){
+            const data = {
+               "fname": result.fname,
+               "lname": result.lname,
+               "email": cur_email,
+               "num": result.num,
+               "add": result.add,
+               "jowar": 0,
+               "rice": 0,
+               "corn": 0,
+               "wheat": wheat
+            }
+            farmer.insertOne(data,function(err, collection){
+               if (err) throw err;
+               console.log("Record inserted Successfully");
+            });
+         })
+      }
+   })
+})
+
+app.get('/adminf',function(req,res){
+   users.find({"mode": "Farmer"}).toArray(function(err,result){
+      if (err) throw err;
+      res.render('Adminf',{data: result});
+   });
+})
+
+app.post('/delf',function(req,res){
+   const del = req.body.delete;
+   console.log(del);
+   const myquery = { "email": del };
+   users.deleteOne(myquery, function(err, obj) {
+      if (err) throw err;
+      res.redirect('/adminf');
+  });
+})
+
+app.get('/adminc',function(req,res){
+   users.find({"mode": "Consumer"}).toArray(function(err,result){
+      if (err) throw err;
+      res.render('Adminc',{data: result});
+   });
+})
+
+app.post('/delc',function(req,res){
+   const del = req.body.delete;
+   console.log(del);
+   const myquery = { "email": del };
+   users.deleteOne(myquery, function(err, obj) {
+      if (err) throw err;
+      res.redirect('/adminc');
+  });
+})
+
+app.post('/contact',function(req,res){
+   const fname = req.body.fname;
+   const lname = req.body.lname;
+   const email = req.body.email;
+   const num = req.body.num;
+   const msg = req.body.msg;
+
+   const data = {
+      "fname": fname,
+      "lname": lname,
+      "email": email,
+      "num": num,
+      "message": msg,
+   }
+
+   if(!fname || !lname || !email || !num || !(num.length === 10) || !msg) {
+      res.render('Signup')
+      return;
+   }
+
+   contact.insertOne(data,function(err, collection){
+      if (err) throw err;
+      console.log("Message recorded successfully");
+   });
+})
 
 app.get('/logout',function(req,res){
    res.render('Login');

@@ -7,6 +7,7 @@
     <title>Contact Us</title>
     <link rel="stylesheet" href="../css/Contact.css" />
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <script src="../js/Contact.js"></script>
 </head>
 
 <body>
@@ -36,16 +37,16 @@
                 <div class="social-media">
                     <p>Connect with us :</p>
                     <div class="social-icons">
-                        <a href="#">
+                        <a href="https://www.facebook.com/people/Man%C3%B8j-%C4%B6%C5%B1mar/100035110243448/" target="_blank">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#">
+                        <a href="https://twitter.com/ManojCoolzz?t=80mCS2UnENNhV8OLLqVDsQ&s=08" target="_blank">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="#">
+                        <a href="https://www.instagram.com/_akhilg_" target="_blank">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#">
+                        <a href="https://www.linkedin.com/in/akhil-galla-302a33202/" target="_blank">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div>
@@ -54,21 +55,24 @@
 
             <div class="contact-form">
 
-                <form autocomplete="off">
+                <form autocomplete="off" method="post" action="contact">
                     <h3 class="title">Contact us</h3>
                     <div class="input-container">
-                        <input type="text" name="name" class="input" placeholder="Username" />
+                        <input type="text" name="fname" class="input" id="fname" placeholder="First Name" />
                     </div>
                     <div class="input-container">
-                        <input type="email" name="email" class="input" placeholder="Email" />
+                        <input type="text" name="lname" class="input" id="lname" placeholder="Last Name" />
                     </div>
                     <div class="input-container">
-                        <input type="tel" name="phone" class="input" placeholder="Phone" />
+                        <input type="email" name="email" class="input" id="email" placeholder="Email" />
+                    </div>
+                    <div class="input-container">
+                        <input type="tel" name="num" class="input" id="num" placeholder="Phone" />
                     </div>
                     <div class="input-container textarea">
-                        <textarea name="message" class="input" placeholder="Message"></textarea>
+                        <textarea name="msg" class="input" id="msg" placeholder="Message"></textarea>
                     </div>
-                    <input type="submit" value="Send" class="btn" />
+                    <input id="submit" type="submit" value="Send" class="btn" />
                 </form>
 
                 </form>
