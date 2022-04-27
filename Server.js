@@ -1,10 +1,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const nodemailer = require("nodemailer")
+
 const app = express();
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-   extended: true
-}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname));
 
@@ -16,6 +16,14 @@ db.on('error', console.log.bind(console, "connection error"));
 db.once('open', function(){
    console.log("connection succeeded");
 })
+
+// const transporter = nodemailer.createTransport({
+//    service: 'gmail',
+//    auth: {
+//       user: 'akhil.55055@gmail.com',
+//       pass: 'akhil@2022'
+//   }
+// })
 
 const users = db.collection('users');
 const farmer = db.collection('farmer');
@@ -212,7 +220,6 @@ app.post('/displaySearch',function(req,res){
 
    if (query === "jowar") {
       farmer.find({"jowar": {$ne : 0}}).toArray(function(err,result){
-         console.log(query);
          if (err) throw err;
          res.render('Display',{data: result})
          
@@ -221,7 +228,6 @@ app.post('/displaySearch',function(req,res){
 
    if (query === "rice") {
       farmer.find({"rice": {$ne : 0}}).toArray(function(err,result){
-         console.log(query);
          if (err) throw err;
          res.render('Display',{data: result})
          
@@ -230,7 +236,6 @@ app.post('/displaySearch',function(req,res){
 
    if (query === "corn") {
       farmer.find({"corn": {$ne : 0}}).toArray(function(err,result){
-         console.log(query);
          if (err) throw err;
          res.render('Display',{data: result})
          
@@ -239,7 +244,6 @@ app.post('/displaySearch',function(req,res){
 
    if (query === "wheat") {
       farmer.find({"wheat": {$ne : 0}}).toArray(function(err,result){
-         console.log(query);
          if (err) throw err;
          res.render('Display',{data: result})
          
@@ -391,12 +395,14 @@ app.post('/updateWheat',function(req,res){
    })
 })
 
+
 app.get('/adminf',function(req,res){
    users.find({"mode": "Farmer"}).toArray(function(err,result){
       if (err) throw err;
       res.render('Adminf',{data: result});
    });
 })
+
 
 app.post('/delf',function(req,res){
    const del = req.body.delete;
@@ -415,6 +421,7 @@ app.get('/adminc',function(req,res){
    });
 })
 
+
 app.post('/delc',function(req,res){
    const del = req.body.delete;
    console.log(del);
@@ -425,7 +432,8 @@ app.post('/delc',function(req,res){
   });
 })
 
-app.post('/contact',function(req,res){
+
+app.post('/contactSubmit',function(req,res){
    const fname = req.body.fname;
    const lname = req.body.lname;
    const email = req.body.email;
@@ -449,6 +457,21 @@ app.post('/contact',function(req,res){
       if (err) throw err;
       console.log("Message recorded successfully");
    });
+   
+   // const mailOptions = {
+   //    from: 'akhil.55055@gmail.com',
+   //    to: 'akhil.gs20@iiits.in',
+   //    subject: 'Requested help from GrainHub',
+   //    text: `${fname} needs attention about\n\t${msg}\n\nContact this person at ${email}`
+   // };
+   
+   // transporter.sendMail(mailOptions, function(error, info){
+   //    if (error) {
+   //    console.log(error);
+   //    } else {
+   //    console.log('Email sent: ' + info.response);
+   //    }
+   // });
 })
 
 app.get('/logout',function(req,res){

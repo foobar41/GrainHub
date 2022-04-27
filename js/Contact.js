@@ -13,20 +13,17 @@ window.onload = function(){
             return false
     }
 
-    // disable typing space in name
+    // disable typing space
     document.getElementById('fname').onkeydown = (a) => { return no_space(a) }
 
-    // disable typing space in name
+    // disable typing space
     document.getElementById('lname').onkeydown = (a) => { return no_space(a) }
 
-    // disable typing space in name
+    // disable typing space
     document.getElementById('email').onkeydown = (a) => { return no_space(a) }
 
-    // disable typing space in name
+    // disable typing space 
     document.getElementById('num').onkeydown = (a) => { return no_space(a) }
-
-    // disable typing space in name
-    document.getElementById('msg').onkeydown = (a) => { return no_space(a) }
 
     // allow only numbers in contact number
     document.getElementById('num').onkeydown = (a) => { return only_num(a) }
@@ -51,7 +48,6 @@ window.onload = function(){
 
         if (all_filled){
             alert('Succesfully sent your message\nWait for response at your email')
-            return;
         }
     }
 }
