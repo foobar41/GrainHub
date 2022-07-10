@@ -11,7 +11,7 @@ body{
 
 .main{
     width: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.3)50%, rgba(0,0,0,0.3)50%), url(../images/GrainHub_background_3.webp);
+    background: linear-gradient(to top, rgba(0,0,0,0.3)50%, rgba(0,0,0,0.3)50%), url(../assets/GrainHub_background_3.webp);
     background-position: center;
     background-size: cover;
     min-height: 1000px;
